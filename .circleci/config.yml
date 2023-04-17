@@ -14,6 +14,9 @@ jobs:
     executor:
       machine_dlc
     steps:
+      # check what images were saved by "previous DLC"
+      - run: |
+          docker image ls
       - checkout
       - run: |
           docker image build --tag test --file << parameters.dockerfile >> .

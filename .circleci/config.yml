@@ -16,7 +16,7 @@ jobs:
     steps:
       - checkout
       - run: |
-          docker image build --tag test16gb --file << parameters.dockerfile >> .
+          docker image build --tag test --file << parameters.dockerfile >> .
       - run: |
           docker image ls
 
@@ -27,5 +27,7 @@ workflows:
           matrix:
             parameters:
               dockerfile:
-                - Dockerfile_16gb
-                - Dockerfile_14gb
+                # intermediate (16gb) -> final (16gb)
+                - Dockerfile_16gb_16gb
+                # intermediate (13gb) -> final (16gb)
+                - Dockerfile_13gb_16gb

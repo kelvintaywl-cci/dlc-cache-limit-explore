@@ -30,7 +30,7 @@ workflows:
           matrix:
             parameters:
               dockerfile:
-                # intermediate (16gb) -> final (16gb)
-                - Dockerfile_16gb_16gb
-                # intermediate (13gb) -> final (16gb)
-                - Dockerfile_13gb_16gb
+                # # intermediate (16gb) -> final (16gb)
+                # - Dockerfile_16gb_16gb
+                # intermediate (12gb) -> final (16gb)
+                - Dockerfile_12gb_16gb

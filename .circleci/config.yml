@@ -1,0 +1,23 @@
+version: 2.1
+
+executors:
+  machine_dlc:
+    machine:
+      image: ubuntu-2204:2023.02.1
+      docker_layer_caching: true
+
+jobs:
+  image_build:
+    executor:
+      machine_dlc
+    steps:
+      - checkout
+      - run: |
+          docker image build --tag test16gb --file Dockerfile_16gb .
+      - run: |
+          docker image ls
+
+workflows:
+  main:
+    jobs:
+      - image_build

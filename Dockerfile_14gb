@@ -1,0 +1,22 @@
+# approx 1GB
+FROM cimg/base:current as first_stage
+
+RUN fallocate -l 1G 01.img
+RUN fallocate -l 1G 02.img
+RUN fallocate -l 1G 03.img
+RUN fallocate -l 1G 04.img
+RUN fallocate -l 1G 05.img
+RUN fallocate -l 1G 06.img
+RUN fallocate -l 1G 07.img
+RUN fallocate -l 1G 08.img
+RUN fallocate -l 1G 09.img
+RUN fallocate -l 1G 10.img
+RUN fallocate -l 1G 11.img
+RUN fallocate -l 1G 12.img
+RUN fallocate -l 1G 13.img
+
+# + 13GB now => 14 GB
+
+FROM cimg/base:current
+
+COPY --from=first_stage /home/circleci/project/*.img ./

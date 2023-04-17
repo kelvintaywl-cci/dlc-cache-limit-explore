@@ -8,16 +8,24 @@ executors:
 
 jobs:
   image_build:
+    parameters:
+      dockerfile:
+        type: string
     executor:
       machine_dlc
     steps:
       - checkout
       - run: |
-          docker image build --tag test16gb --file Dockerfile_16gb .
+          docker image build --tag test16gb --file << parameters.dockerfile >> .
       - run: |
           docker image ls
 
 workflows:
   main:
     jobs:
-      - image_build
+      - image_build:
+          matrix:
+            parameters:
+              dockerfile:
+                - Dockerfile_16gb
+                - Dockerfile_14gb

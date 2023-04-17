@@ -21,7 +21,3 @@ RUN fallocate -l 1G 08.img
 RUN fallocate -l 1G 09.img
 RUN fallocate -l 1G 10.img
 RUN fallocate -l 1G 11.img
-RUN fallocate -l 1G 12.img
-RUN fallocate -l 1G 13.img
-RUN fallocate -l 1G 14.img
-RUN fallocate -l 1G 15.img

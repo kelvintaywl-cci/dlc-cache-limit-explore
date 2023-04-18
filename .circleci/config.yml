@@ -7,9 +7,9 @@ executors:
       docker_layer_caching: true
 
 jobs:
-  image_build:
+  image_pull:
     parameters:
-      dockerfile:
+      docker_image:
         type: string
     executor:
       machine_dlc
@@ -19,18 +19,15 @@ jobs:
           docker image ls
       - checkout
       - run: |
-          docker image build --tag test --file << parameters.dockerfile >> .
+          docker image pull << parameters.docker_image >>
       - run: |
           docker image ls
 
 workflows:
   main:
     jobs:
-      - image_build:
+      - image_pull:
           matrix:
             parameters:
-              dockerfile:
-                # intermediate (16gb) -> final (16gb)
-                - Dockerfile_16gb_16gb
-                # intermediate (13gb) -> final (16gb)
-                - Dockerfile_13gb_16gb
+              docker_image:
+                - "cimg/base:current"

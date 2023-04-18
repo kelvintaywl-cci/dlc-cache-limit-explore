@@ -30,4 +30,7 @@ workflows:
           matrix:
             parameters:
               docker_image:
+                # approx 1.12 GB
                 - "cimg/base:current"
+                # approx 2.09 GB
+                - "cimg/mysql:5.7"

@@ -16,12 +16,12 @@ jobs:
     steps:
       # check what images were saved by "previous DLC"
       - run: |
-          docker image ls
+          docker image ls --digests
       - checkout
       - run: |
           docker image build --tag test --file << parameters.dockerfile >> .
       - run: |
-          docker image ls
+          docker image ls --digests
 
 workflows:
   main:
